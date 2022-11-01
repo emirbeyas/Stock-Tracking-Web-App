@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="REEDER2ModelStoreContainer" CdmEntityContainer="REEDER2Entities">
+    <EntitySetMapping Name="DEPARTMANLAR">
+      <EntityTypeMapping TypeName="REEDER2Model.DEPARTMANLAR">
+        <MappingFragment StoreEntitySet="DEPARTMANLAR">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ACIKLAMA" ColumnName="ACIKLAMA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FATURA">
+      <EntityTypeMapping TypeName="REEDER2Model.FATURA">
+        <MappingFragment StoreEntitySet="FATURA">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TOPLAM" ColumnName="TOPLAM" />
+          <ScalarProperty Name="FISID" ColumnName="FISID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FATURALAR">
+      <EntityTypeMapping TypeName="REEDER2Model.FATURALAR">
+        <MappingFragment StoreEntitySet="FATURALAR">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FATURANO" ColumnName="FATURANO" />
+          <ScalarProperty Name="TARIHID" ColumnName="TARIHID" />
+          <ScalarProperty Name="URUNID" ColumnName="URUNID" />
+          <ScalarProperty Name="FATURAID" ColumnName="FATURAID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FIS">
+      <EntityTypeMapping TypeName="REEDER2Model.FIS">
+        <MappingFragment StoreEntitySet="FIS">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FISNO" ColumnName="FISNO" />
+          <ScalarProperty Name="SEPETID" ColumnName="SEPETID" />
+          <ScalarProperty Name="PERSONELID" ColumnName="PERSONELID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KATEGORILER">
+      <EntityTypeMapping TypeName="REEDER2Model.KATEGORILER">
+        <MappingFragment StoreEntitySet="KATEGORILER">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ACIKLAMA" ColumnName="ACIKLAMA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MUSTERI">
+      <EntityTypeMapping TypeName="REEDER2Model.MUSTERI">
+        <MappingFragment StoreEntitySet="MUSTERI">
+          <ScalarProperty Name="DURUM" ColumnName="DURUM" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ADISOYADI" ColumnName="ADISOYADI" />
+          <ScalarProperty Name="TCKIMLIKNO" ColumnName="TCKIMLIKNO" />
+          <ScalarProperty Name="DOGUMTARIHI" ColumnName="DOGUMTARIHI" />
+          <ScalarProperty Name="SIFRE" ColumnName="SIFRE" />
+          <ScalarProperty Name="YASADIGISEHIRID" ColumnName="YASADIGISEHIRID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PERSONELLER">
+      <EntityTypeMapping TypeName="REEDER2Model.PERSONELLER">
+        <MappingFragment StoreEntitySet="PERSONELLER">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ADISOYADI" ColumnName="ADISOYADI" />
+          <ScalarProperty Name="TCKIMLIKNO" ColumnName="TCKIMLIKNO" />
+          <ScalarProperty Name="DEPARTMANID" ColumnName="DEPARTMANID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SEHIRLER">
+      <EntityTypeMapping TypeName="REEDER2Model.SEHIRLER">
+        <MappingFragment StoreEntitySet="SEHIRLER">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ACIKLAMA" ColumnName="ACIKLAMA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SEPET">
+      <EntityTypeMapping TypeName="REEDER2Model.SEPET">
+        <MappingFragment StoreEntitySet="SEPET">
+          <ScalarProperty Name="KONTROL" ColumnName="KONTROL" />
+          <ScalarProperty Name="ADRES" ColumnName="ADRES" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="MUSTERIID" ColumnName="MUSTERIID" />
+          <ScalarProperty Name="TARIH" ColumnName="TARIH" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SEPETSATIR">
+      <EntityTypeMapping TypeName="REEDER2Model.SEPETSATIR">
+        <MappingFragment StoreEntitySet="SEPETSATIR">
+          <ScalarProperty Name="TARIH" ColumnName="TARIH" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="SEPETID" ColumnName="SEPETID" />
+          <ScalarProperty Name="URUNID" ColumnName="URUNID" />
+          <ScalarProperty Name="URUNADET" ColumnName="URUNADET" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="URUNLER">
+      <EntityTypeMapping TypeName="REEDER2Model.URUNLER">
+        <MappingFragment StoreEntitySet="URUNLER">
+          <ScalarProperty Name="KODU" ColumnName="KODU" />
+          <ScalarProperty Name="KALDIR" ColumnName="KALDIR" />
+          <ScalarProperty Name="IMG" ColumnName="IMG" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ADI" ColumnName="ADI" />
+          <ScalarProperty Name="FIYAT" ColumnName="FIYAT" />
+          <ScalarProperty Name="STOKMIKTAR" ColumnName="STOKMIKTAR" />
+          <ScalarProperty Name="KATEGORIID" ColumnName="KATEGORIID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SAYAC">
+      <EntityTypeMapping TypeName="REEDER2Model.SAYAC">
+        <MappingFragment StoreEntitySet="SAYAC">
+          <ScalarProperty Name="FFATURA" ColumnName="FFATURA" />
+          <ScalarProperty Name="FFIS" ColumnName="FFIS" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FIYATDEGISTIR">
+      <EntityTypeMapping TypeName="REEDER2Model.FIYATDEGISTIR">
+        <MappingFragment StoreEntitySet="FIYATDEGISTIR">
+          <ScalarProperty Name="EFIYAT" ColumnName="EFIYAT" />
+          <ScalarProperty Name="DTARIH" ColumnName="DTARIH" />
+          <ScalarProperty Name="URUNID" ColumnName="URUNID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

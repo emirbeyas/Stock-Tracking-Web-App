@@ -1,0 +1,117 @@
+﻿.List {
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+}
+
+.siralama {
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-around;
+}
+
+    .siralama input[type=submit] {
+        width: 400px;
+        border-radius: 0;
+        border: 0.1px solid black;
+        background-color: white;
+    }
+
+        .siralama input[type=submit]:hover {
+            transition: 0.5s;
+            background-color: black;
+            color: white;
+            border-radius: 0;
+            cursor: default;
+        }
+
+.Cart {
+    position: relative;
+    width: 240px;
+    height: auto;
+    border: 0.1px solid gray;
+    overflow: hidden;
+    border-radius: 1px;
+    background-color: whitesmoke;
+    display: inline-block;
+    margin: 21px;
+}
+
+    .Cart img {
+        width: 100%;
+        height: auto !important;
+        text-align: center;
+        padding: 15px;
+    }
+
+    .Cart .innercart {
+        overflow: hidden;
+    }
+
+    .Cart:hover {
+        border: none;
+        box-shadow: 1px 5px 15px #ccc;
+    }
+
+.innercart a {
+    background-color: transparent;
+    border: none;
+    float: right;
+    margin: 5px 6px;
+}
+
+    .innercart a:hover {
+        cursor: default;
+    }
+
+.innercart p {
+    margin: 5px 3px;
+}
+/*POPUP*/
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 101;
+}
+
+    .overlay:target {
+        visibility: visible;
+        opacity: 1;
+    }
+
+.popup {
+    margin: 35vh auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    width: 45%;
+    position: relative;
+    transition: all 5s ease-in-out;
+}
+
+    .popup .close {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        transition: all 200ms;
+        font-size: 30px;
+        font-weight: bold;
+        text-decoration: none;
+        color: #333;
+    }
+
+        .popup .close:hover {
+            color: #06D85F;
+        }
+
+    .popup .content {
+        max-height: 30%;
+        overflow: auto;
+    }

@@ -1,0 +1,39 @@
+﻿body {
+    background-color:whitesmoke;
+}
+
+.Fatura {
+    box-shadow: 0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+    background: white;
+    width: 400px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+.bolum1 p{
+    font-family:monospace;
+    text-align:left;
+    margin: 30px 10px;
+}
+.bolum2 table{
+    display:flex;
+    justify-content:space-evenly;
+    font-family:monospace;
+    margin:10px;
+    font-size:18px;
+}
+.bolum2 table th {
+
+    font-family: monospace;
+    font-weight: bold;
+    margin: 10px;
+    width:200px;
+
+}
+.bolum4 p {
+    width: 100%;
+    font-family: monospace;
+    text-align: left;
+    margin: 30px 10px;
+    padding: 10px;
+}

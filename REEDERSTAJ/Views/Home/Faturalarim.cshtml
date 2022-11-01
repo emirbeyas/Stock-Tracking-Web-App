@@ -1,0 +1,47 @@
+﻿@model IEnumerable<REEDERSTAJ.Models.FATURALAR>
+
+@{
+    ViewBag.Title = "Faturalar";
+}
+
+
+<h2 style="margin-top:100px;">Faturalar</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Fatura Numarası
+        </th>
+        <th>
+            Tarih
+        </th>
+        <th style="text-align:center;">
+            Görüntüle
+        </th>
+    </tr>
+    
+
+    @foreach (var item in Model)
+    {
+        if (  Convert.ToInt32 (Session["Musteri"]) == item.SEPET.MUSTERI.ID )
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FATURANO)
+            </td>
+            <td>
+                @Html.DisplayFor(ModelItem => item.SEPET.TARIH).ToString().Split(' ')[0]
+            </td>
+
+            <td style="text-align:center;">
+                <a href="@Url.Action("FaturaGoruntule", "Home", new { id = item.ID })" style="color:black;"><i class="fa fa-eye fa-2x"></i></a>
+
+            </td>
+        </tr>
+        }
+    }
+
+</table>
+<div style="height:100vh;">
+
+</div>

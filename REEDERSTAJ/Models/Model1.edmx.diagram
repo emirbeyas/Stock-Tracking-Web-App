@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="54ee408205d14273a64f37ab866d3c68" Name="Diagram1" ZoomLevel="103">
+        <EntityTypeShape EntityType="REEDER2Model.DEPARTMANLAR" Width="1.5" PointX="9.375" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="REEDER2Model.FATURA" Width="1.5" PointX="12.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="REEDER2Model.FATURALAR" Width="1.5" PointX="7.625" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="REEDER2Model.FIS" Width="1.5" PointX="10.5" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="REEDER2Model.KATEGORILER" Width="1.5" PointX="2.125" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="REEDER2Model.MUSTERI" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="REEDER2Model.PERSONELLER" Width="1.5" PointX="11.625" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="REEDER2Model.SEHIRLER" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="REEDER2Model.SEPET" Width="1.5" PointX="5.25" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="REEDER2Model.SEPETSATIR" Width="1.5" PointX="7.625" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="REEDER2Model.URUNLER" Width="1.5" PointX="4.375" PointY="8" IsExpanded="true" />
+        <AssociationConnector Association="REEDER2Model.FK__PERSONELL__DEPAR__300424B4" ManuallyRouted="false" />
+        <AssociationConnector Association="REEDER2Model.FK__FATURA__FISID__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="REEDER2Model.FK__FATURALAR__FATUR__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="REEDER2Model.FK__FATURALAR__TARIH__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="REEDER2Model.FK__FATURALAR__URUNI__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="REEDER2Model.FK__FIS__PERSONELID__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="REEDER2Model.FK__FIS__SEPETID__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="REEDER2Model.FK__URUNLER__KATEGOR__267ABA7A" ManuallyRouted="false" />
+        <AssociationConnector Association="REEDER2Model.FK__MUSTERI__YASADIG__2B3F6F97" ManuallyRouted="false" />
+        <AssociationConnector Association="REEDER2Model.FK__SEPET__MUSTERIID__32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="REEDER2Model.FK__SEPETSATI__SEPET__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="REEDER2Model.FK__SEPETSATI__URUNI__36B12243" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="REEDER2Model.SAYAC" Width="1.5" PointX="2.875" PointY="1.75" />
+        <EntityTypeShape EntityType="REEDER2Model.FIYATDEGISTIR" Width="1.5" PointX="6.625" PointY="8.625" />
+        <AssociationConnector Association="REEDER2Model.FK__FIYATDEGI__URUNI__4BAC3F29" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

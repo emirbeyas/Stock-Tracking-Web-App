@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/CSS/layout.css" rel="stylesheet" />
+
+</head>
+<body>
+
+
+    <div class="header">
+        <div class="logo" style="display:inline;">
+
+            <a href="~/Home/Index" style="margin:2px 3%; display:inline;"> <img src="~/IMG/logobeyaz.png" height="45px"> </a>
+
+            <span class="Sayfalar">
+                <a href="~/Home/Telefon">Telefon</a>
+                <a href="~/Home/Tablet">Tablet</a>
+                <a href="~/Home/AkilliSaat">Akilli Saat</a>
+            </span>
+
+            @if (Session["ADMIN"] != null)
+            {
+
+
+                <span class="Degistir" style="float:right; margin:-1px 3%;">
+                    <a href="~/Login/Index" style="color:white; margin:10px; font-size:30px; display:inline-block; text-decoration:none;">ADMİN</a>
+                    <a href="~/Yonetim/Index" style="color:white; margin:10px; font-size:30px; display:inline-block; text-decoration:none;"><i class="fa fa-link"></i></a>
+                </span>
+
+
+            }
+            else if (Session["Musteri"] != null)
+            {
+
+        <span style="float:right; margin:-1px 3%;">
+            <span onclick="openNav()">
+                <a href="#" style="color:white; margin:10px; font-size:30px; display:inline-block; text-decoration:none;">@Session["Musteriad"].ToString().Split(' ')[0]</a>
+            </span>
+
+
+            <a href="@Url.Action("Sepet", "Home", new { id = Session["SepetID"] })" style="color:white; margin:10px;"><i class="fa fa-shopping-basket fa-3x"></i></a>
+            @if (Convert.ToInt32(@Session["SepetS"]) == 0)
+            {
+
+                <span class="cart-counter" style="display:none;">@Session["SepetS"]</span>
+            }
+            else
+            {
+
+                <span class="cart-counter">@Session["SepetS"]</span>
+            }
+
+        </span>
+
+            }
+            else
+            {
+                <span style="float:right; margin:4px 3%;">
+                    <a href="~/Login/Index" style="color:white; margin:10px;"><i class="fa fa-user-circle-o fa-3x"></i></a>
+                    <a href="~/Home/Sepet" style="color:white; margin:10px;"><i class="fa fa-shopping-basket fa-3x"></i></a>
+
+                </span>
+
+            }
+
+        </div>
+
+    </div>
+
+
+
+    <div id="mySidenav" class="sidenav" style="z-index:100">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+        <a href="@Url.Action("Profil", "Home", new { id = Session["Musteri"] } )" class="Icerik" style="margin-bottom:35px;">
+            <div class="avatar" style=" margin-top:0px; zoom:200%;">
+                <img src="~/IMG/avatar.jpg" />
+            </div>
+        </a>
+
+        <a href="~/Home/Faturalarim" class="Icerik">Faturalarım</a>
+        <a href="~/Home/Telefon" class="Icerik">Telefon</a>
+        <a href="~/Home/Tablet" class="Icerik">Tablet</a>
+        <a href="~/Home/AkilliSaat" class="Icerik">AkıllıSaat</a>
+        <a href="~/Login/Index" class="Icerik Exit">ÇIKIŞ</a>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+    <footer>
+        <div class="fCon">
+            <img src="~/IMG/logobeyaz.png" style="display:block; padding-top:150px; margin: auto; opacity: .9;" />
+        </div>
+    </footer>
+
+
+
+
+    <script src="~/JAVASCRIPT/Side.js"></script>
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+</body>
+</html>

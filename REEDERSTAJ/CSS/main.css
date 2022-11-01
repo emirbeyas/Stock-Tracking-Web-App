@@ -1,0 +1,134 @@
+﻿*{
+    padding:0px;
+    margin:0px;
+}
+.Slider {
+    width: auto;
+    height: 570px;
+    background: url('../IMG/slide/1.jpg') round;
+    margin-top: 60px;
+    border-radius:3px;
+    animation: Slide 15s infinite;
+}
+@-webkit-keyframes Slide {
+
+    25% {
+        background: url('../IMG/slide/2.jpg') round;
+    }
+    50% {
+        background: url('../IMG/slide/4.jpg') round;
+    }
+    75% {
+        background: url('../IMG/slide/5.jpg') round;
+    }
+    100% {
+        background: url('../IMG/slide/1.jpg') round;
+    }
+
+}
+
+.kutular{
+    display:flex;
+    justify-content:space-around;
+}
+
+.kutular .kutu:nth-child(1) {
+    width: 185px;
+    height: 185px;
+    background: url("https://scontent-dfw5-2.cdninstagram.com/v/t51.29350-15/111153511_2781730218717609_5126738667860327326_n.jpg?_nc_cat=100&_nc_sid=8ae9d6&_nc_ohc=-Pp1tXZv_zMAX90Iuj6&_nc_ht=scontent-dfw5-2.cdninstagram.com&oh=67ffc56c210a4f0818b8b055093f0f48&oe=5F410650") round;
+}
+    .kutular .kutu:nth-child(2) {
+        width: 185px;
+        height: 185px;
+        background: url("https://scontent-dfw5-1.cdninstagram.com/v/t51.29350-15/110022036_278976733205677_2301162973773497105_n.jpg?_nc_cat=105&_nc_sid=8ae9d6&_nc_ohc=pyGFcz_TM4gAX_v-27a&_nc_ht=scontent-dfw5-1.cdninstagram.com&oh=bbfc521c3963d4867bd6caff80d8bc84&oe=5F40C7FA") round;
+    }
+    .kutular .kutu:nth-child(3) {
+        width: 185px;
+        height: 185px;
+        background: url("https://scontent-dfw5-1.cdninstagram.com/v/t51.29350-15/106420431_666552707264648_6212691361983848986_n.jpg?_nc_cat=105&_nc_sid=8ae9d6&_nc_ohc=cGCIfYZCM3oAX9JurEH&_nc_ht=scontent-dfw5-1.cdninstagram.com&oh=652cfc8718013ae120e1422b15faafa7&oe=5F3F5AF2") round;
+    }
+    .kutular .kutu:nth-child(4) {
+        width: 185px;
+        height: 185px;
+        background: url("https://scontent-dfw5-2.cdninstagram.com/v/t51.29350-15/108030141_612688166295236_1910251158432855434_n.jpg?_nc_cat=104&_nc_sid=8ae9d6&_nc_ohc=m790PzWeiVgAX9ECVk7&_nc_ht=scontent-dfw5-2.cdninstagram.com&oh=52759f22f9bffda5c63022771a7f0245&oe=5F401F0B") round;
+    }
+    .kutular .kutu:nth-child(5) {
+        width: 185px;
+        height: 185px;
+        background: url("https://scontent-dfw5-1.cdninstagram.com/v/t51.29350-15/106557508_790334928460331_4610679028326381727_n.jpg?_nc_cat=110&_nc_sid=8ae9d6&_nc_ohc=l-MyKLarPIgAX-0gbzi&_nc_oc=AQkxq1rdjD8e-e0pnh92tuYXnx2U-rByXfdMsm5NcaRLok99LTp6Utl0Vuc7kegU44M&_nc_ht=scontent-dfw5-1.cdninstagram.com&oh=038a056aadf6c2a99b80254467f840cc&oe=5F3D6C22") round;
+    }
+    .kutular .kutu:nth-child(6) {
+        width: 185px;
+        height: 185px;
+        background: url("https://scontent-dfw5-2.cdninstagram.com/v/t51.29350-15/106912041_2644290462512189_5801897574011602074_n.jpg?_nc_cat=107&_nc_sid=8ae9d6&_nc_ohc=2p2iZfqKdBQAX97-oTZ&_nc_oc=AQn5B6VgTq2CoXWq8X58Qf4X81IDHHQQC-mJnqAIRmPOE4TxOyJIvDGilWdzHu4bkf8&_nc_ht=scontent-dfw5-2.cdninstagram.com&oh=0f83c874125dcc841c150851643c5458&oe=5F3D8403") round;
+    }
+    .kutular .kutu:hover {
+        transition: .5s;
+        filter: blur(1px);
+    }
+
+    .Videolar{
+        display:flex;
+
+    }
+    .Videolar .block{
+        width:380px;
+        height:380px;
+        border:0.1px solid gray;
+        background-color:whitesmoke;
+    }
+    .Videolar .Cerceve{
+        width:340px;
+        height:340px;
+        margin:18px auto;
+
+        background-color:whitesmoke;
+    }
+/*POPUP*/
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 101;
+}
+
+    .overlay:target {
+        visibility: visible;
+        opacity: 1;
+    }
+
+.popup {
+    margin: 35vh auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    width: 45%;
+    position: relative;
+    transition: all 5s ease-in-out;
+}
+
+    .popup .close {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        transition: all 200ms;
+        font-size: 30px;
+        font-weight: bold;
+        text-decoration: none;
+        color: #333;
+    }
+
+        .popup .close:hover {
+            color: #06D85F;
+        }
+
+    .popup .content {
+        max-height: 30%;
+        overflow: auto;
+    }

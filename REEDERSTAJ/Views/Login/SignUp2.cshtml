@@ -1,0 +1,59 @@
+﻿@model REEDERSTAJ.Models.MUSTERI
+
+@{
+    ViewBag.Title = "Signup";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Signup</h2>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="~/CSS/Login.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="Absolute-Center is-Responsive">
+                <div id="logo-container"></div>
+                <div class="col-sm-12 col-md-10 col-md-offset-1">
+                    <form method="post" id="loginForm">
+                        <div class="form-group input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            @*@Html.EditorFor(model => model.ADISOYADI, new { htmlAttributes = new { @class = "form-control" } })*@
+                            <input class="form-control" type="text" name='TCKIMLIKNO' placeholder="TC Kimlik No" />
+                        </div>
+                        <div class="form-group input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                            <input class="form-control" type="text" name='ADISOYADI' placeholder="Ad Soyad" />
+                        </div>
+                        <div class="form-group input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input class="form-control" type="date" name='DOGUMTARIHI' placeholder="Doğum Tarihi" />
+                        </div>
+                        <div class="form-group input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                            @Html.DropDownList("YASADIGISEHIRID", null, htmlAttributes: new { @class = "form-control" })
+                        </div>
+                        <div class="form-group input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                            <input class="form-control" type="password" name='SIFRE' placeholder="Şifre" />
+                        </div>
+
+                        <div class="form-group">
+                            <button type="button" class="btn btn-def btn-block">Kayıt Ol</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

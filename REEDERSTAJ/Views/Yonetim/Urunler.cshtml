@@ -1,0 +1,76 @@
+﻿@model IEnumerable<REEDERSTAJ.Models.URUNLER>
+
+@{
+    ViewBag.Title = "URUNLER";
+    Layout = "~/Views/Shared/_YonetimLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.KODU)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ADI)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FIYAT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.STOKMIKTAR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KATEGORILER.ACIKLAMA)
+        </th>
+        <th>
+            DURUM
+        </th>
+        <th>Düzenle</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.KODU)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ADI)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FIYAT) ₺
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.STOKMIKTAR)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KATEGORILER.ACIKLAMA)
+            </td>
+            <td>
+                @if (item.KALDIR == false)
+                {
+                    @Html.Label("KALDIRILDI");
+                }
+                else if (item.KALDIR == true)
+                {
+                    @Html.Label("SATIŞTA");
+                }
+                else
+                {
+                    @Html.Label("NULL");
+                }
+            </td>
+
+            <td>
+                <a href="@Url.Action("UrunDuzenle", "Yonetim", new { id = item.ID } )" style="color:black;"><i class="fa fa-pencil fa-2x"></i></a>
+            </td>
+        </tr>
+    }
+
+</table>
+<p>
+    <a href="@Url.Action("URUNEKLE", "Yonetim", new { } )" style="color:red;"><input type="button" name="name" class="btn btn-success" value="EKLE" /></a>
+</p>

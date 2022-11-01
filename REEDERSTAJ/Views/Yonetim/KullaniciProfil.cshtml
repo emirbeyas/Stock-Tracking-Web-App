@@ -1,0 +1,99 @@
+﻿@model REEDERSTAJ.Models.MUSTERI
+
+@{
+    ViewBag.Title = "KullaniciProfil";
+    Layout = "~/Views/Shared/_YonetimLayout.cshtml";
+
+}
+
+
+<head>
+
+    <style>
+        body {
+            background-color: whitesmoke;
+        }
+
+        .MCART {
+            box-shadow: 0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+            background: #2c3338;
+            width: 400px;
+            height: auto;
+            margin-left: auto;
+            margin-right: auto;
+        }
+            .MCART .avatar img {
+                display:block;
+                height: 200px;
+                width: 200px;
+                border-radius: 50%;
+                border: 5px solid #272133;
+                margin: auto;
+                box-shadow: 0 10px 50px rgba(235, 25, 110, 1);
+            }
+            ul li{
+                font-family:monospace;
+                font-weight:bold;
+                font-size:45px;
+                list-style:none;
+                text-decoration:none;
+                color:white;
+            }
+            a.de{
+                font-family:monospace;
+                font-weight:bold;
+                font-size:45px;
+                text-decoration:none;
+                margin-left:25px;
+                color:whitesmoke;
+            }
+            a.de:hover{
+                transition:.5s;
+                color:whitesmoke;
+                opacity:.8;
+                text-decoration:none;
+            }
+    </style>
+
+</head>
+
+<h2>KullaniciProfil</h2>
+
+<div class="MCART">
+
+    <div class="avatar" style="padding-top: 35px;">
+        <img src="~/IMG/avatar.jpg" />
+    </div>
+
+    <div class="bilgiler">
+
+        <ul style="margin-top:35px; text-align:center;">
+            <li>@Model.TCKIMLIKNO</li>
+            <hr style="width:75%; margin:auto;" />
+            <li>@Model.ADISOYADI</li>
+            <hr style="width:75%; margin:auto;" />
+            <li>@Model.SEHIRLER.ACIKLAMA</li>
+            <hr style="width:75%; margin:auto;" />
+            <li>@Model.DOGUMTARIHI.ToString().Split(' ')[0]</li>
+            <hr style="width:75%; margin:auto;" />
+            <li>@Model.SIFRE</li>
+            <hr style="width:75%; margin:auto;" />
+
+            @if (Model.DURUM == true || Model.DURUM == null)
+            {
+                <li style="display:inline-block;">AKTİF</li> <a href="@Url.Action("DurumDegistir", "Yonetim", new { id = Model.ID } )" class="de"> DEGİŞTİR </a>
+            }                               
+            else
+            {
+                <li style="display:inline-block;">PASİF</li> <a href="@Url.Action("DurumDegistir", "Yonetim", new { id = Model.ID } )" class="de"> DEGİŞTİR </a>
+            }
+
+        </ul>
+
+    </div>
+    
+    <div style="height:20px;">
+
+    </div>
+
+</div>

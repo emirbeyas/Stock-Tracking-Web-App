@@ -1,0 +1,54 @@
+﻿@model IEnumerable<REEDERSTAJ.Models.FATURALAR>
+
+@{
+    ViewBag.Title = "Faturalar";
+    Layout = "~/Views/Shared/_YonetimLayout.cshtml";
+}
+
+<head>
+    <style>
+        body {
+            background-color: whitesmoke;
+        }
+    </style>
+</head>
+
+<h2 style="margin-top:100px;">Faturalar</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Fatura Numarası
+        </th>
+        <th>
+            Tarih
+        </th>
+        <th>
+            Müşteri
+        </th>
+        <th style="text-align:center;">
+            Görüntüle
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FATURANO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SEPET.TARIH).ToString().Split(' ')[0]
+            </td>
+            <td>
+                @Html.DisplayFor(ModelItem => item.SEPET.MUSTERI.ADISOYADI)
+            </td>
+
+            <td style="text-align:center;">
+                <a href="@Url.Action("FaturaGoruntule", new { id = item.ID } )" style="color:black;"><i class="fa fa-eye fa-2x"></i></a>
+
+            </td>
+        </tr>
+    }
+
+</table>

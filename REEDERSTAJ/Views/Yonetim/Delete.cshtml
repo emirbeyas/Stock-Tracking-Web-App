@@ -1,0 +1,70 @@
+﻿@model REEDERSTAJ.Models.MUSTERI
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_YonetimLayout.cshtml";
+}
+    <head>
+        <style>
+
+
+        </style>
+
+    </head>
+
+<h3>Bu Kullanıcıyı silmek istediğine emin misin?</h3>
+<div>
+    <h4>MUSTERI</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ADISOYADI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ADISOYADI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TCKIMLIKNO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TCKIMLIKNO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DOGUMTARIHI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DOGUMTARIHI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SIFRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SIFRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SEHIRLER.ACIKLAMA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SEHIRLER.ACIKLAMA)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="btn-danger" /> |
+            @Html.ActionLink("Kullanıcılar Listesine Dön", "Kullanicilar")
+        </div>
+    }
+</div>

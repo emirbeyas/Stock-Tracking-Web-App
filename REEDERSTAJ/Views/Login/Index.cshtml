@@ -1,0 +1,67 @@
+﻿@model REEDERSTAJ.Models.MUSTERI
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="~/CSS/Login.css" rel="stylesheet" />
+</head>
+<body>
+    @if (Session["Musteri"] != null)
+    {
+        Session.Remove("Musteri");
+    }
+
+
+    @if (Session["ADMIN"] != null)
+    {
+        Session.Remove("ADMIN");
+    }
+    <BR /><BR /><BR /><BR />
+    <BR /><BR /><BR /><BR />
+    <BR /><BR /><BR /><BR />
+    @TempData["PASIFUYE"];
+    @TempData["HATA"]
+
+    <div class="container">
+        <div class="row">
+            <div class="Absolute-Center is-Responsive">
+                <div id="logo-container"></div>
+                <div class="col-sm-12 col-md-10 col-md-offset-1">
+
+                    @using (Html.BeginForm("Index", "Login", FormMethod.Post))
+                    {
+                        <div class="form-group input-group">
+                            <span class="input-group-addon"><i class="fa fa-id-card"></i></span>
+                            <input class="form-control" type="text" name='TCKIMLIKNO' placeholder="TC Kimlik No" />
+                        </div>
+                        <div class="form-group input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                            <input class="form-control" type="password" name='SIFRE' placeholder="Şifre" />
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-def btn-block">Giriş</button>
+
+                        </div>
+                        <a href="~/Login/Signup">Kayıt Ol</a>
+                        <h2>@ViewBag.mesaj</h2>
+                    }
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="height:100vh;">
+
+    </div>
+</body>
+</html>

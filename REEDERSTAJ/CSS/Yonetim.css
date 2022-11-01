@@ -1,0 +1,13 @@
+﻿body{
+    background:whitesmoke;
+}
+.Degistir a {
+    display: inline-block;
+    font-family: Arial;
+    color: white;
+    text-decoration: none;
+    font-size: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
+    vertical-align: bottom;
+}

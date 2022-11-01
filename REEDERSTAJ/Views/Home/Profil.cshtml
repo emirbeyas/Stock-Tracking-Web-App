@@ -1,0 +1,179 @@
+﻿@model REEDERSTAJ.Models.MUSTERI
+
+@{
+    ViewBag.Title = "Profil";
+}
+
+
+<head>
+
+    <style>
+        body {
+            background-color: whitesmoke;
+        }
+
+        .MCART {
+            box-shadow: 0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+            background: #2c3338;
+            width: 400px;
+            height: auto;
+            margin-top:8vh;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+            .MCART .avatar img {
+                display: block;
+                height: 200px;
+                width: 200px;
+                border-radius: 50%;
+                border: 5px solid #272133;
+                margin: auto;
+                box-shadow: 0 10px 50px rgba(235, 25, 110, 1);
+            }
+
+        ul li {
+            font-family: monospace;
+            font-weight: bold;
+            font-size: 45px;
+            list-style: none;
+            text-decoration: none;
+            color: white;
+        }
+
+        a.de {
+            font-family: monospace;
+            font-weight: bold;
+            font-size: 45px;
+            text-decoration: none;
+            margin-left: 25px;
+            color: whitesmoke;
+        }
+
+            a.de:hover {
+                transition: .5s;
+                color: whitesmoke;
+                opacity: .8;
+                text-decoration: none;
+            }
+
+        /*POPUP*/
+        .overlay {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            transition: opacity 500ms;
+            visibility: hidden;
+            opacity: 0;
+            z-index: 101;
+        }
+
+            .overlay:target {
+                visibility: visible;
+                opacity: 1;
+            }
+
+        .popup {
+            margin: 35vh auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 5px;
+            width: 45%;
+            position: relative;
+            transition: all 5s ease-in-out;
+        }
+
+            .popup .close {
+                position: absolute;
+                top: 20px;
+                right: 30px;
+                transition: all 200ms;
+                font-size: 30px;
+                font-weight: bold;
+                text-decoration: none;
+                color: #333;
+            }
+
+                .popup .close:hover {
+                    color: #06D85F;
+                }
+
+            .popup .content {
+                max-height: 30%;
+                overflow: auto;
+            }
+    </style>
+</head>
+<body onload="POPUP()">
+
+    <h2>KullaniciProfil</h2>
+
+    @if (TempData["D"] != null)
+    {
+
+        <div id="popup1" class="overlay">
+            <div class="popup">
+                <i class="fa fa-check-circle-o fa fa-2x" style="color:green; display:inline-block; margin-right:15px;"></i><h2 style="display:inline-block;">ŞİFRENİZ BAŞARIYLA DEĞİŞTİRİLDİ</h2>
+                <a class="close" href="#">&times;</a>
+                <div class="content">
+
+                </div>
+            </div>
+        </div>
+
+    }
+
+
+
+
+
+    <div class="MCART">
+
+        <div class="avatar" style="padding-top: 35px;">
+            <img src="~/IMG/avatar.jpg" />
+        </div>
+
+        <div class="bilgiler">
+
+            <ul style="margin-top:35px; text-align:center; padding:0px;">
+                <li>@Model.TCKIMLIKNO</li>
+                <hr style="width:75%; margin:auto;" />
+                <li>@Model.ADISOYADI</li>
+                <hr style="width:75%; margin:auto;" />
+                <li>@Model.SEHIRLER.ACIKLAMA</li>
+                <hr style="width:75%; margin:auto;" />
+                <li>@Model.DOGUMTARIHI.ToString().Split(' ')[0]</li>
+                <hr style="width:75%; margin:auto;" />
+                <li style="display:inline-block;" id="pass">*********  <a href="~/Home/Sifre"><i class="fa fa-pencil" style="display:inline-block; color:white; zoom:90%; "></i></a></li>
+                <hr style="width:75%; margin:auto;" />
+
+                @if (Model.DURUM == true || Model.DURUM == null)
+                {
+                    <li style="display:inline-block;">AKTİF</li>
+                }
+                else
+                {
+                    <li style="display:inline-block;">PASİF</li>
+                }
+
+            </ul>
+
+        </div>
+
+        <div style="height:20px;">
+
+        </div>
+
+    </div>
+    <div style="height:22vh">
+
+    </div>
+</body>
+<script>
+        function POPUP() {
+            location.href = "#popup1";
+        }
+</script>

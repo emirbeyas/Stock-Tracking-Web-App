@@ -1,0 +1,74 @@
+﻿@model REEDERSTAJ.Models.MUSTERI
+
+@{
+    ViewBag.Title = "SignUp";
+}
+
+    <HEAD>
+        <link href="~/CSS/Login.css" rel="stylesheet" />
+        <style>
+            h1.HATA{
+                color:black;
+                margin-top:80px;
+                text-align:center;
+                border:1px solid black;
+                padding:25px 5px;
+            }
+
+
+
+
+        </style>
+    </HEAD>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+    <div class="container">
+        <div class="row"> 
+            @if (TempData["HATA"] != null)
+            {
+            <h1 class="HATA">@TempData["HATA"]</h1>
+            }
+            <div class="Absolute-Center is-Responsive">
+                <div id="logo-container"></div>
+                <div class="col-sm-12 col-md-10 col-md-offset-1">
+                    <form method="post" id="loginForm">
+                        <div class="form-group input-group">
+                            <span class="input-group-addon"><i class="fa fa-id-card"></i></span>
+                            <input class="form-control" type="text" name='TCKIMLIKNO' placeholder="TC Kimlik No" maxlength="11" minlength="11" required autocomplete="off" />
+                        </div>
+                        <div class="form-group input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input class="form-control" type="text" name='ADISOYADI' placeholder="Ad Soyad" required autocomplete="off" />
+                        </div>
+                        <div class="form-group input-group">
+                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                            <input class="form-control" type="date" name='DOGUMTARIHI' placeholder="Doğum Tarihi" required autocomplete="off" />
+                        </div>
+                        <div class="form-group input-group">
+                            <span class="input-group-addon"><i class="fa fa-globe"></i></span>
+                            @Html.DropDownList("YASADIGISEHIRID", null, htmlAttributes: new { @class = "form-control" })
+                        </div>
+                        <div class="form-group input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                            <input class="form-control" type="password" name='SIFRE' placeholder="Şifre" required autocomplete="off" />
+                        </div>
+
+                        <div class="form-group">
+                            <input type="submit" value="KAYIT OL" class="btn btn-def btn-block" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+<div style="height:100vh;">
+
+</div>

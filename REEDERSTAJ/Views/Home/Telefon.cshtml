@@ -1,0 +1,93 @@
+﻿@model IEnumerable<REEDERSTAJ.Models.URUNLER>
+
+@{
+    ViewBag.Title = "Telefon";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="~/CSS/Telefon.css" rel="stylesheet" />
+</head>
+@using (Html.BeginForm())
+{
+    <body onload="POPUP()">
+        @Html.AntiForgeryToken()
+
+        @if (TempData["POPUP"] != null)
+        {
+
+            <div id="popup1" class="overlay">
+                <div class="popup">
+                    <i class="fa fa-check-circle-o fa fa-2x" style="color:green; display:inline-block; margin-right:15px;"></i><h2 style="display:inline-block;">ÜRÜN SEPETİNİZE BAŞARIYLA EKLENDİ</h2>
+                    <a class="close" href="#">&times;</a>
+                    <div class="content">
+
+                    </div>
+                </div>
+            </div>
+
+        }
+
+        <div class="banner">
+            <img src="~/IMG/banner/1920x300-gt_2_1.jpg" width="100%" height="auto" style="margin-top:100px;">
+        </div>
+        <div class="siralama">
+
+            <input type="submit" name="SIRA" value="En Yüksek Fiyat" />
+            <input type="submit" name="SIRA" value="En Düşük Fiyat" />
+            <input type="submit" name="SIRA" value="En Yeni" />
+            <input type="submit" name="SIRA" value="En Eski" />
+
+
+        </div>
+
+        <div class="List">
+            @foreach (var item in Model)
+            {
+                if (item.KALDIR == true)
+                {
+                    if (item.KATEGORIID == 1)
+                    {
+                        if (item.STOKMIKTAR > 0)
+                        {
+                            <div class="Cart">
+                                <img src="@item.IMG" alt="" />
+                                <div class="innercart">
+                                    <center><p style="font-weight: bold; font-size: 25px;">@Html.DisplayFor(modelItem => item.ADI)</p></center>
+                                    <p style="display:inline; font-weight:bold; font-size:30px;">@Html.DisplayFor(modelItem => item.FIYAT)₺</p>
+                                    @*<button class="addtocart"><i class="fa fa-shopping-basket fa-2x"></i></button>*@
+                                    <a href="@Url.Action("UrunDetay", "Home", new { id = item.ID })" style="color:black; opacity:.7;"><i class="fa fa-shopping-basket fa-2x"></i></a>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="Cart">
+                                <img src="@item.IMG" />
+                                <div class="innercart">
+                                    <center><p style="font-weight: bold; font-size: 25px;">@Html.DisplayFor(modelItem => item.ADI)</p></center>
+                                    <p style="display:inline; font-weight:bold; font-size:30px;">@Html.DisplayFor(modelItem => item.FIYAT)₺</p>
+                                    <p style="margin-top:3px; margin-right:5px; float:right; font-weight:bold; font-size:25px;">Tükendi</p>
+                                </div>
+                            </div>
+                        }
+                    }
+                }
+            }
+        </div>
+
+        <script>
+            function POPUP() {
+                location.href = "#popup1";
+            }
+        </script>
+
+        <br /><br /><br />
+    </body>
+}
+</html>

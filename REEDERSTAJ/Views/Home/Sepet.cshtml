@@ -1,0 +1,100 @@
+﻿@model IEnumerable<REEDERSTAJ.Models.SEPETSATIR>
+
+@{
+    ViewBag.Title = "Sepet";
+}
+
+<head>
+    <link href="~/CSS/Sepet.css" rel="stylesheet" />
+</head>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <body>
+
+        <div class="Sepet">
+
+            <div class="col-md-9" style="">
+                <table class="Satir">
+                    <tr>
+                        <th>
+                            Ürün
+                        </th>
+                        <th>
+                            ADET
+                        </th>
+                        <th>
+                            FİYAT
+                        </th>
+                        <th>
+                            SİL
+                        </th>
+
+                    </tr>
+
+
+
+                    @{
+                        double TF = 1;
+                        double SepetFiyat = 0;
+                    }
+
+                    @foreach (var item in Model)
+                    {
+                        if (item.SEPET.MUSTERI.ADISOYADI.ToString() == Session["MusteriAd"].ToString() && item.SEPETID == Convert.ToInt32(Session["SepetID"]))
+                        {
+
+                        TF = Convert.ToDouble(item.URUNADET) * Convert.ToDouble(item.URUNLER.FIYAT);
+                        SepetFiyat = TF + SepetFiyat;
+                            <tr>
+                                <td style="width:25%;">
+                                    <span>
+                                        <img src="@item.URUNLER.IMG" height="65px" style="float:left; margin-left:35px; display:inline-block;" /> <p style="display:inline-block; margin-top:20px;">@item.URUNLER.ADI</p>
+                                    </span>
+                                </td>
+                                <td>
+                                    @item.URUNADET
+                                </td>
+                                <td>
+                                    @TF ₺
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("SepettenCikar", "Home", new { id = item.ID } )"> <i class="fa fa-times-circle-o" style="color:red;"></i> </a>
+                                </td>
+                            </tr>
+                        }
+                    }
+
+                </table>
+
+
+            </div>
+
+            <div class="col-md-3">
+                <div class="SiparisEt">
+                    <p>@Session["MusteriAd"]</p>
+                    <p>tarih: @DateTime.Now.ToString().Split(' ')[0]</p>
+                    <textarea name="ADRES" required placeholder="ADRES" style="max-width:200px; max-height:100px; min-width:200px; min-height:100px; margin-left:10px; resize:none;"></textarea>
+                    <br />
+                    <h3 style="margin:10px; display:inline-block;">@SepetFiyat ₺</h3>
+
+                    @{ 
+                        Session["Toplam"] = SepetFiyat;
+                    }
+
+                    <input type="hidden" name="MUSTERIID" value= " @Session["Musteri"] " />
+                    <input type="hidden" name="TARIH" value=" @DateTime.Now " />
+
+
+
+
+                    <input class="btn btn-success" type="submit" value="Satın AL" style=" margin:10px; " />
+                </div>
+            </div>
+        </div>
+
+        <div style="height:100vh;">
+
+        </div>
+    </body>
+}

@@ -1,0 +1,157 @@
+﻿.header{
+    background:black;
+    width:100%;
+    height:50px;
+    position:fixed;
+    z-index:99;
+}
+.Sayfalar a{
+    display:inline-block;
+    font-family:Arial;
+    color:white;
+    text-decoration:none;
+    font-size:25px;
+    margin-left:10px;
+    margin-right:10px;
+    vertical-align:bottom;
+}
+
+@media screen and (max-width: 768px) {
+    .Sayfalar {
+        display: none;
+    }
+}
+
+
+.cart-counter {
+    position: absolute;
+    bottom: 1px;
+    right: 70px;
+    padding: 0 5px;
+    height: 18px;
+    min-width: 18px;
+    text-align: center;
+    line-height: 20px;
+    border-radius: 50%;
+    background-color: orangered;
+    display: block;
+    font-weight: 600;
+    font-size: 10px;
+    color: white;
+    cursor:default;
+}
+
+    body::-webkit-scrollbar {
+        -webkit-appearance: none;
+        background-color:transparent;
+    }
+
+        body::-webkit-scrollbar:vertical {
+            width: 11px;
+        }
+
+        body::-webkit-scrollbar:horizontal {
+            height: 11px;
+        }
+
+    body::-webkit-scrollbar-thumb {
+        border-radius: 8px;
+        border: 2px solid white; /* should match background, can't be transparent */
+        background-color: rgba(0, 0, 0, .5);
+    }
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1; 
+    top: 0; 
+    right: 0;
+    background-color: #111; 
+    overflow-x: hidden; 
+    padding-top: 60px; 
+    transition: 0.5s; 
+}
+
+
+
+    .sidenav a {
+        margin:8px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+    }
+    
+        .sidenav a:hover {
+            color: #f1f1f1;
+        }
+        .sidenav a.Icerik {
+            font-weight: bold;
+            width: 100%;
+            text-align: center;
+            zoom: 160%;
+            color: white;
+        }
+        .sidenav a.Icerik:hover {
+            color:gray;
+        }
+        .sidenav a.Exit {
+            position:absolute;
+            font-weight: bold;
+            width:100%;
+            text-align:center;
+            zoom: 160%;
+            color: white;
+            margin-left: auto;
+            margin-right:auto;
+            bottom:50px;
+        }
+
+    .sidenav .closebtn {
+        position: absolute;
+        top: 0;
+        left: 25px;
+        font-size: 36px;
+    }
+
+#main {
+    transition: margin-left .5s;
+    padding: 20px;
+}
+
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+        .sidenav a {
+            font-size: 18px;
+        }
+
+    .Sayfalar {
+        display:none;
+    }
+}
+
+
+.fCon{
+    background-color:black;
+    opacity: .9;
+    width:100%;
+    height:450px;
+}
+.Icerik .avatar img {
+    display: block;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 1px solid #272133;
+    margin: auto;
+}
+.Icerik .avatar img:hover {
+    transition:.7s;
+    box-shadow: 0 10px 50px #f1f1f1;
+}

@@ -1,0 +1,148 @@
+﻿@model REEDERSTAJ.Models.VMSepeteEkle
+
+@{
+    ViewBag.Title = "UrunDetay";
+}
+<head>
+
+    <link href="~/CSS/UrunDetay.css" rel="stylesheet" />
+    <style>
+        /*POPUP*/
+        .overlay {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            transition: opacity 500ms;
+            visibility: hidden;
+            opacity: 0;
+            z-index: 101;
+        }
+
+            .overlay:target {
+                visibility: visible;
+                opacity: 1;
+            }
+
+        .popup {
+            margin: 35vh auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 5px;
+            width: 45%;
+            position: relative;
+            transition: all 5s ease-in-out;
+        }
+
+            .popup .close {
+                position: absolute;
+                top: 20px;
+                right: 30px;
+                transition: all 200ms;
+                font-size: 30px;
+                font-weight: bold;
+                text-decoration: none;
+                color: #333;
+            }
+
+                .popup .close:hover {
+                    color: #06D85F;
+                }
+
+            .popup .content {
+                max-height: 30%;
+                overflow: auto;
+            }
+        
+
+    </style>
+</head>
+
+@using (Html.BeginForm())
+{
+    <body onload="POPUP()">
+        @Html.AntiForgeryToken()
+
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
+
+        @if (TempData["HATA"] != null)
+        {
+            <div id="popup1" class="overlay">
+                <div class="popup">
+                    <i class="fa fa-times fa-3x" style="color:red; display:inline-block; margin-right:15px;"></i><h2 style="display:inline-block; zoom:120%;"> ÜRÜN MİKTARINDA HATA </h2>
+                    <a class="close" href="#">&times;</a>
+                    <div class="content">
+                    </div>
+                </div>
+            </div>
+        }
+        @if (TempData["SHATA"] != null)
+        {
+            <div id="popup1" class="overlay">
+                <div class="popup">
+                    <i class="fa fa-times fa-3x" style="color:red; display:inline-block; margin-right:15px;"></i><h2 style="display:inline-block; zoom:120%;"> İSTENİLEN MİKTARDA ÜRÜN BULUNMUYOR </h2>
+                    <a class="close" href="#">&times;</a>
+                    <div class="content">
+                    </div>
+                </div>
+            </div>
+        }
+
+        <div class="sepeteekle">
+
+            <div class="col-md-4">
+                <img src="@Model.GetURUNLER.IMG" height="auto" width="80%" style="margin:25px; " />
+
+            </div>
+
+            <div class="col-md-8 Detay" style="margin-top:25px;">
+                <p>@Model.GetURUNLER.KODU</p>
+                <h1>@Model.GetURUNLER.ADI</h1>
+                <H2>@Model.GetURUNLER.FIYAT ₺</H2>
+
+                <input type="text" name="URUNID" value="@Model.GetURUNLER.ID" style="display:none;" />
+                <input type="text" name="SEPETID" value="@Session["SepetID"]" style="display:none;" />
+
+                <div style="margin-top:30px;">
+                    <span class="qtys">
+                        <input type="button" value="-" class="qty-minus" style=" border-radius: 4px 0 0 4px; border-right:none;">
+                        <input type="number" name="URUNADET" value="1" class="qty" autocomplete="off" style=" padding: 2px 0px; border-left:none; border-right:none; background-color:whitesmoke; z-index:49;">
+                        <input type="button" value="+" class="qty-plus" style=" border-radius: 0 4px 4px 0; border-left:none; z-index:50;">
+                    </span>
+
+                    <input type="submit" class="btn btn-success" value="SEPETE EKLE" />
+                </div>
+            </div>
+
+        </div>
+
+        <div style="height:40vh;">
+
+        </div>
+    </body>
+}
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    function POPUP() {
+        location.href = "#popup1";
+    }
+
+    $(document).on('click', '.qty-plus', function () {
+        $(this).prev().val(+$(this).prev().val() + 1);
+    });
+    $(document).on('click', '.qty-minus', function () {
+        if ($(this).next().val() > 0) $(this).next().val(+$(this).next().val() - 1);
+    });
+</script>

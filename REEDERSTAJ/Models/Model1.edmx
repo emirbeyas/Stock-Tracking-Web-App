@@ -1,0 +1,883 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="REEDER2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DEPARTMANLAR">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ACIKLAMA" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="FATURA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TOPLAM" Type="float" />
+          <Property Name="FISID" Type="int" />
+        </EntityType>
+        <EntityType Name="FATURALAR">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FATURANO" Type="varchar" MaxLength="8" />
+          <Property Name="TARIHID" Type="int" />
+          <Property Name="URUNID" Type="int" />
+          <Property Name="FATURAID" Type="int" />
+        </EntityType>
+        <EntityType Name="FIS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FISNO" Type="varchar" MaxLength="8" />
+          <Property Name="SEPETID" Type="int" />
+          <Property Name="PERSONELID" Type="int" />
+        </EntityType>
+        <EntityType Name="FIYATDEGISTIR">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="URUNID" Type="int" />
+          <Property Name="DTARIH" Type="datetime" />
+          <Property Name="EFIYAT" Type="float" />
+        </EntityType>
+        <EntityType Name="KATEGORILER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ACIKLAMA" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="MUSTERI">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ADISOYADI" Type="varchar" MaxLength="100" />
+          <Property Name="TCKIMLIKNO" Type="varchar" MaxLength="11" />
+          <Property Name="DOGUMTARIHI" Type="date" />
+          <Property Name="SIFRE" Type="varchar" MaxLength="20" />
+          <Property Name="YASADIGISEHIRID" Type="int" />
+          <Property Name="DURUM" Type="bit" />
+        </EntityType>
+        <EntityType Name="PERSONELLER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ADISOYADI" Type="varchar" MaxLength="100" />
+          <Property Name="TCKIMLIKNO" Type="varchar" MaxLength="11" />
+          <Property Name="DEPARTMANID" Type="int" />
+        </EntityType>
+        <EntityType Name="SAYAC">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FFIS" Type="varchar" MaxLength="8" />
+          <Property Name="FFATURA" Type="varchar" MaxLength="8" />
+        </EntityType>
+        <EntityType Name="SEHIRLER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ACIKLAMA" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="SEPET">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MUSTERIID" Type="int" />
+          <Property Name="TARIH" Type="datetime" />
+          <Property Name="ADRES" Type="varchar" MaxLength="300" />
+          <Property Name="KONTROL" Type="bit" />
+        </EntityType>
+        <EntityType Name="SEPETSATIR">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SEPETID" Type="int" />
+          <Property Name="URUNID" Type="int" />
+          <Property Name="URUNADET" Type="int" />
+          <Property Name="TARIH" Type="date" />
+        </EntityType>
+        <EntityType Name="URUNLER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ADI" Type="varchar" MaxLength="100" />
+          <Property Name="FIYAT" Type="float" />
+          <Property Name="STOKMIKTAR" Type="int" />
+          <Property Name="KATEGORIID" Type="int" />
+          <Property Name="IMG" Type="varchar" MaxLength="350" />
+          <Property Name="KALDIR" Type="bit" />
+          <Property Name="KODU" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <Association Name="FK__FATURA__FISID__3D5E1FD2">
+          <End Role="FIS" Type="Self.FIS" Multiplicity="0..1" />
+          <End Role="FATURA" Type="Self.FATURA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FIS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FATURA">
+              <PropertyRef Name="FISID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FATURALAR__FATUR__4222D4EF">
+          <End Role="FATURA" Type="Self.FATURA" Multiplicity="0..1" />
+          <End Role="FATURALAR" Type="Self.FATURALAR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FATURA">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FATURALAR">
+              <PropertyRef Name="FATURAID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FATURALAR__TARIH__403A8C7D">
+          <End Role="SEPET" Type="Self.SEPET" Multiplicity="0..1" />
+          <End Role="FATURALAR" Type="Self.FATURALAR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEPET">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FATURALAR">
+              <PropertyRef Name="TARIHID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FATURALAR__URUNI__412EB0B6">
+          <End Role="SEPETSATIR" Type="Self.SEPETSATIR" Multiplicity="0..1" />
+          <End Role="FATURALAR" Type="Self.FATURALAR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEPETSATIR">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FATURALAR">
+              <PropertyRef Name="URUNID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FIS__PERSONELID__3A81B327">
+          <End Role="PERSONELLER" Type="Self.PERSONELLER" Multiplicity="0..1" />
+          <End Role="FIS" Type="Self.FIS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERSONELLER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FIS">
+              <PropertyRef Name="PERSONELID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FIS__SEPETID__398D8EEE">
+          <End Role="SEPET" Type="Self.SEPET" Multiplicity="0..1" />
+          <End Role="FIS" Type="Self.FIS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEPET">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FIS">
+              <PropertyRef Name="SEPETID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FIYATDEGI__URUNI__4BAC3F29">
+          <End Role="URUNLER" Type="Self.URUNLER" Multiplicity="0..1" />
+          <End Role="FIYATDEGISTIR" Type="Self.FIYATDEGISTIR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="URUNLER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FIYATDEGISTIR">
+              <PropertyRef Name="URUNID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MUSTERI__YASADIG__2B3F6F97">
+          <End Role="SEHIRLER" Type="Self.SEHIRLER" Multiplicity="0..1" />
+          <End Role="MUSTERI" Type="Self.MUSTERI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEHIRLER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MUSTERI">
+              <PropertyRef Name="YASADIGISEHIRID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PERSONELL__DEPAR__300424B4">
+          <End Role="DEPARTMANLAR" Type="Self.DEPARTMANLAR" Multiplicity="0..1" />
+          <End Role="PERSONELLER" Type="Self.PERSONELLER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DEPARTMANLAR">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PERSONELLER">
+              <PropertyRef Name="DEPARTMANID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SEPET__MUSTERIID__32E0915F">
+          <End Role="MUSTERI" Type="Self.MUSTERI" Multiplicity="0..1" />
+          <End Role="SEPET" Type="Self.SEPET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MUSTERI">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SEPET">
+              <PropertyRef Name="MUSTERIID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SEPETSATI__SEPET__35BCFE0A">
+          <End Role="SEPET" Type="Self.SEPET" Multiplicity="0..1" />
+          <End Role="SEPETSATIR" Type="Self.SEPETSATIR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEPET">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SEPETSATIR">
+              <PropertyRef Name="SEPETID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SEPETSATI__URUNI__36B12243">
+          <End Role="URUNLER" Type="Self.URUNLER" Multiplicity="0..1" />
+          <End Role="SEPETSATIR" Type="Self.SEPETSATIR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="URUNLER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SEPETSATIR">
+              <PropertyRef Name="URUNID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__URUNLER__KATEGOR__267ABA7A">
+          <End Role="KATEGORILER" Type="Self.KATEGORILER" Multiplicity="0..1" />
+          <End Role="URUNLER" Type="Self.URUNLER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KATEGORILER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="URUNLER">
+              <PropertyRef Name="KATEGORIID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="REEDER2ModelStoreContainer">
+          <EntitySet Name="DEPARTMANLAR" EntityType="Self.DEPARTMANLAR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FATURA" EntityType="Self.FATURA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FATURALAR" EntityType="Self.FATURALAR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FIS" EntityType="Self.FIS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FIYATDEGISTIR" EntityType="Self.FIYATDEGISTIR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KATEGORILER" EntityType="Self.KATEGORILER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MUSTERI" EntityType="Self.MUSTERI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PERSONELLER" EntityType="Self.PERSONELLER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SAYAC" EntityType="Self.SAYAC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SEHIRLER" EntityType="Self.SEHIRLER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SEPET" EntityType="Self.SEPET" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SEPETSATIR" EntityType="Self.SEPETSATIR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="URUNLER" EntityType="Self.URUNLER" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__FATURA__FISID__3D5E1FD2" Association="Self.FK__FATURA__FISID__3D5E1FD2">
+            <End Role="FIS" EntitySet="FIS" />
+            <End Role="FATURA" EntitySet="FATURA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FATURALAR__FATUR__4222D4EF" Association="Self.FK__FATURALAR__FATUR__4222D4EF">
+            <End Role="FATURA" EntitySet="FATURA" />
+            <End Role="FATURALAR" EntitySet="FATURALAR" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FATURALAR__TARIH__403A8C7D" Association="Self.FK__FATURALAR__TARIH__403A8C7D">
+            <End Role="SEPET" EntitySet="SEPET" />
+            <End Role="FATURALAR" EntitySet="FATURALAR" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FATURALAR__URUNI__412EB0B6" Association="Self.FK__FATURALAR__URUNI__412EB0B6">
+            <End Role="SEPETSATIR" EntitySet="SEPETSATIR" />
+            <End Role="FATURALAR" EntitySet="FATURALAR" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FIS__PERSONELID__3A81B327" Association="Self.FK__FIS__PERSONELID__3A81B327">
+            <End Role="PERSONELLER" EntitySet="PERSONELLER" />
+            <End Role="FIS" EntitySet="FIS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FIS__SEPETID__398D8EEE" Association="Self.FK__FIS__SEPETID__398D8EEE">
+            <End Role="SEPET" EntitySet="SEPET" />
+            <End Role="FIS" EntitySet="FIS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FIYATDEGI__URUNI__4BAC3F29" Association="Self.FK__FIYATDEGI__URUNI__4BAC3F29">
+            <End Role="URUNLER" EntitySet="URUNLER" />
+            <End Role="FIYATDEGISTIR" EntitySet="FIYATDEGISTIR" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MUSTERI__YASADIG__2B3F6F97" Association="Self.FK__MUSTERI__YASADIG__2B3F6F97">
+            <End Role="SEHIRLER" EntitySet="SEHIRLER" />
+            <End Role="MUSTERI" EntitySet="MUSTERI" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PERSONELL__DEPAR__300424B4" Association="Self.FK__PERSONELL__DEPAR__300424B4">
+            <End Role="DEPARTMANLAR" EntitySet="DEPARTMANLAR" />
+            <End Role="PERSONELLER" EntitySet="PERSONELLER" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SEPET__MUSTERIID__32E0915F" Association="Self.FK__SEPET__MUSTERIID__32E0915F">
+            <End Role="MUSTERI" EntitySet="MUSTERI" />
+            <End Role="SEPET" EntitySet="SEPET" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SEPETSATI__SEPET__35BCFE0A" Association="Self.FK__SEPETSATI__SEPET__35BCFE0A">
+            <End Role="SEPET" EntitySet="SEPET" />
+            <End Role="SEPETSATIR" EntitySet="SEPETSATIR" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SEPETSATI__URUNI__36B12243" Association="Self.FK__SEPETSATI__URUNI__36B12243">
+            <End Role="URUNLER" EntitySet="URUNLER" />
+            <End Role="SEPETSATIR" EntitySet="SEPETSATIR" />
+          </AssociationSet>
+          <AssociationSet Name="FK__URUNLER__KATEGOR__267ABA7A" Association="Self.FK__URUNLER__KATEGOR__267ABA7A">
+            <End Role="KATEGORILER" EntitySet="KATEGORILER" />
+            <End Role="URUNLER" EntitySet="URUNLER" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="REEDER2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DEPARTMANLAR">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ACIKLAMA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PERSONELLER" Relationship="Self.FK__PERSONELL__DEPAR__300424B4" FromRole="DEPARTMANLAR" ToRole="PERSONELLER" />
+        </EntityType>
+        <EntityType Name="FATURA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TOPLAM" Type="Double" />
+          <Property Name="FISID" Type="Int32" />
+          <NavigationProperty Name="FIS" Relationship="Self.FK__FATURA__FISID__3D5E1FD2" FromRole="FATURA" ToRole="FIS" />
+          <NavigationProperty Name="FATURALAR" Relationship="Self.FK__FATURALAR__FATUR__4222D4EF" FromRole="FATURA" ToRole="FATURALAR" />
+        </EntityType>
+        <EntityType Name="FATURALAR">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FATURANO" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="TARIHID" Type="Int32" />
+          <Property Name="URUNID" Type="Int32" />
+          <Property Name="FATURAID" Type="Int32" />
+          <NavigationProperty Name="FATURA" Relationship="Self.FK__FATURALAR__FATUR__4222D4EF" FromRole="FATURALAR" ToRole="FATURA" />
+          <NavigationProperty Name="SEPET" Relationship="Self.FK__FATURALAR__TARIH__403A8C7D" FromRole="FATURALAR" ToRole="SEPET" />
+          <NavigationProperty Name="SEPETSATIR" Relationship="Self.FK__FATURALAR__URUNI__412EB0B6" FromRole="FATURALAR" ToRole="SEPETSATIR" />
+        </EntityType>
+        <EntityType Name="FIS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FISNO" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="SEPETID" Type="Int32" />
+          <Property Name="PERSONELID" Type="Int32" />
+          <NavigationProperty Name="FATURA" Relationship="Self.FK__FATURA__FISID__3D5E1FD2" FromRole="FIS" ToRole="FATURA" />
+          <NavigationProperty Name="PERSONELLER" Relationship="Self.FK__FIS__PERSONELID__3A81B327" FromRole="FIS" ToRole="PERSONELLER" />
+          <NavigationProperty Name="SEPET" Relationship="Self.FK__FIS__SEPETID__398D8EEE" FromRole="FIS" ToRole="SEPET" />
+        </EntityType>
+        <EntityType Name="KATEGORILER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ACIKLAMA" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="URUNLER" Relationship="Self.FK__URUNLER__KATEGOR__267ABA7A" FromRole="KATEGORILER" ToRole="URUNLER" />
+        </EntityType>
+        <EntityType Name="MUSTERI">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ADISOYADI" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TCKIMLIKNO" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="DOGUMTARIHI" Type="DateTime" Precision="0" />
+          <Property Name="SIFRE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="YASADIGISEHIRID" Type="Int32" />
+          <NavigationProperty Name="SEHIRLER" Relationship="Self.FK__MUSTERI__YASADIG__2B3F6F97" FromRole="MUSTERI" ToRole="SEHIRLER" />
+          <NavigationProperty Name="SEPET" Relationship="Self.FK__SEPET__MUSTERIID__32E0915F" FromRole="MUSTERI" ToRole="SEPET" />
+          <Property Name="DURUM" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="PERSONELLER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ADISOYADI" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TCKIMLIKNO" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="DEPARTMANID" Type="Int32" />
+          <NavigationProperty Name="DEPARTMANLAR" Relationship="Self.FK__PERSONELL__DEPAR__300424B4" FromRole="PERSONELLER" ToRole="DEPARTMANLAR" />
+          <NavigationProperty Name="FIS" Relationship="Self.FK__FIS__PERSONELID__3A81B327" FromRole="PERSONELLER" ToRole="FIS" />
+        </EntityType>
+        <EntityType Name="SEHIRLER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ACIKLAMA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MUSTERI" Relationship="Self.FK__MUSTERI__YASADIG__2B3F6F97" FromRole="SEHIRLER" ToRole="MUSTERI" />
+        </EntityType>
+        <EntityType Name="SEPET">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MUSTERIID" Type="Int32" />
+          <Property Name="TARIH" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="FATURALAR" Relationship="Self.FK__FATURALAR__TARIH__403A8C7D" FromRole="SEPET" ToRole="FATURALAR" />
+          <NavigationProperty Name="FIS" Relationship="Self.FK__FIS__SEPETID__398D8EEE" FromRole="SEPET" ToRole="FIS" />
+          <NavigationProperty Name="MUSTERI" Relationship="Self.FK__SEPET__MUSTERIID__32E0915F" FromRole="SEPET" ToRole="MUSTERI" />
+          <NavigationProperty Name="SEPETSATIR" Relationship="Self.FK__SEPETSATI__SEPET__35BCFE0A" FromRole="SEPET" ToRole="SEPETSATIR" />
+          <Property Name="ADRES" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="KONTROL" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="SEPETSATIR">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SEPETID" Type="Int32" />
+          <Property Name="URUNID" Type="Int32" />
+          <Property Name="URUNADET" Type="Int32" />
+          <NavigationProperty Name="FATURALAR" Relationship="Self.FK__FATURALAR__URUNI__412EB0B6" FromRole="SEPETSATIR" ToRole="FATURALAR" />
+          <NavigationProperty Name="SEPET" Relationship="Self.FK__SEPETSATI__SEPET__35BCFE0A" FromRole="SEPETSATIR" ToRole="SEPET" />
+          <NavigationProperty Name="URUNLER" Relationship="Self.FK__SEPETSATI__URUNI__36B12243" FromRole="SEPETSATIR" ToRole="URUNLER" />
+          <Property Name="TARIH" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="URUNLER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ADI" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FIYAT" Type="Double" />
+          <Property Name="STOKMIKTAR" Type="Int32" />
+          <Property Name="KATEGORIID" Type="Int32" />
+          <NavigationProperty Name="KATEGORILER" Relationship="Self.FK__URUNLER__KATEGOR__267ABA7A" FromRole="URUNLER" ToRole="KATEGORILER" />
+          <NavigationProperty Name="SEPETSATIR" Relationship="Self.FK__SEPETSATI__URUNI__36B12243" FromRole="URUNLER" ToRole="SEPETSATIR" />
+          <Property Name="IMG" Type="String" MaxLength="350" FixedLength="false" Unicode="false" />
+          <Property Name="KALDIR" Type="Boolean" />
+          <Property Name="KODU" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="FIYATDEGISTIR" Relationship="REEDER2Model.FK__FIYATDEGI__URUNI__4BAC3F29" FromRole="URUNLER" ToRole="FIYATDEGISTIR" />
+        </EntityType>
+        <Association Name="FK__PERSONELL__DEPAR__300424B4">
+          <End Role="DEPARTMANLAR" Type="Self.DEPARTMANLAR" Multiplicity="0..1" />
+          <End Role="PERSONELLER" Type="Self.PERSONELLER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DEPARTMANLAR">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PERSONELLER">
+              <PropertyRef Name="DEPARTMANID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FATURA__FISID__3D5E1FD2">
+          <End Role="FIS" Type="Self.FIS" Multiplicity="0..1" />
+          <End Role="FATURA" Type="Self.FATURA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FIS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FATURA">
+              <PropertyRef Name="FISID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FATURALAR__FATUR__4222D4EF">
+          <End Role="FATURA" Type="Self.FATURA" Multiplicity="0..1" />
+          <End Role="FATURALAR" Type="Self.FATURALAR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FATURA">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FATURALAR">
+              <PropertyRef Name="FATURAID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FATURALAR__TARIH__403A8C7D">
+          <End Role="SEPET" Type="Self.SEPET" Multiplicity="0..1" />
+          <End Role="FATURALAR" Type="Self.FATURALAR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEPET">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FATURALAR">
+              <PropertyRef Name="TARIHID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FATURALAR__URUNI__412EB0B6">
+          <End Role="SEPETSATIR" Type="Self.SEPETSATIR" Multiplicity="0..1" />
+          <End Role="FATURALAR" Type="Self.FATURALAR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEPETSATIR">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FATURALAR">
+              <PropertyRef Name="URUNID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FIS__PERSONELID__3A81B327">
+          <End Role="PERSONELLER" Type="Self.PERSONELLER" Multiplicity="0..1" />
+          <End Role="FIS" Type="Self.FIS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERSONELLER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FIS">
+              <PropertyRef Name="PERSONELID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FIS__SEPETID__398D8EEE">
+          <End Role="SEPET" Type="Self.SEPET" Multiplicity="0..1" />
+          <End Role="FIS" Type="Self.FIS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEPET">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FIS">
+              <PropertyRef Name="SEPETID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__URUNLER__KATEGOR__267ABA7A">
+          <End Role="KATEGORILER" Type="Self.KATEGORILER" Multiplicity="0..1" />
+          <End Role="URUNLER" Type="Self.URUNLER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KATEGORILER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="URUNLER">
+              <PropertyRef Name="KATEGORIID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MUSTERI__YASADIG__2B3F6F97">
+          <End Role="SEHIRLER" Type="Self.SEHIRLER" Multiplicity="0..1" />
+          <End Role="MUSTERI" Type="Self.MUSTERI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEHIRLER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MUSTERI">
+              <PropertyRef Name="YASADIGISEHIRID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SEPET__MUSTERIID__32E0915F">
+          <End Role="MUSTERI" Type="Self.MUSTERI" Multiplicity="0..1" />
+          <End Role="SEPET" Type="Self.SEPET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MUSTERI">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SEPET">
+              <PropertyRef Name="MUSTERIID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SEPETSATI__SEPET__35BCFE0A">
+          <End Role="SEPET" Type="Self.SEPET" Multiplicity="0..1" />
+          <End Role="SEPETSATIR" Type="Self.SEPETSATIR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEPET">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SEPETSATIR">
+              <PropertyRef Name="SEPETID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SEPETSATI__URUNI__36B12243">
+          <End Role="URUNLER" Type="Self.URUNLER" Multiplicity="0..1" />
+          <End Role="SEPETSATIR" Type="Self.SEPETSATIR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="URUNLER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SEPETSATIR">
+              <PropertyRef Name="URUNID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="REEDER2Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DEPARTMANLAR" EntityType="Self.DEPARTMANLAR" />
+          <EntitySet Name="FATURA" EntityType="Self.FATURA" />
+          <EntitySet Name="FATURALAR" EntityType="Self.FATURALAR" />
+          <EntitySet Name="FIS" EntityType="Self.FIS" />
+          <EntitySet Name="KATEGORILER" EntityType="Self.KATEGORILER" />
+          <EntitySet Name="MUSTERI" EntityType="Self.MUSTERI" />
+          <EntitySet Name="PERSONELLER" EntityType="Self.PERSONELLER" />
+          <EntitySet Name="SEHIRLER" EntityType="Self.SEHIRLER" />
+          <EntitySet Name="SEPET" EntityType="Self.SEPET" />
+          <EntitySet Name="SEPETSATIR" EntityType="Self.SEPETSATIR" />
+          <EntitySet Name="URUNLER" EntityType="Self.URUNLER" />
+          <AssociationSet Name="FK__PERSONELL__DEPAR__300424B4" Association="Self.FK__PERSONELL__DEPAR__300424B4">
+            <End Role="DEPARTMANLAR" EntitySet="DEPARTMANLAR" />
+            <End Role="PERSONELLER" EntitySet="PERSONELLER" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FATURA__FISID__3D5E1FD2" Association="Self.FK__FATURA__FISID__3D5E1FD2">
+            <End Role="FIS" EntitySet="FIS" />
+            <End Role="FATURA" EntitySet="FATURA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FATURALAR__FATUR__4222D4EF" Association="Self.FK__FATURALAR__FATUR__4222D4EF">
+            <End Role="FATURA" EntitySet="FATURA" />
+            <End Role="FATURALAR" EntitySet="FATURALAR" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FATURALAR__TARIH__403A8C7D" Association="Self.FK__FATURALAR__TARIH__403A8C7D">
+            <End Role="SEPET" EntitySet="SEPET" />
+            <End Role="FATURALAR" EntitySet="FATURALAR" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FATURALAR__URUNI__412EB0B6" Association="Self.FK__FATURALAR__URUNI__412EB0B6">
+            <End Role="SEPETSATIR" EntitySet="SEPETSATIR" />
+            <End Role="FATURALAR" EntitySet="FATURALAR" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FIS__PERSONELID__3A81B327" Association="Self.FK__FIS__PERSONELID__3A81B327">
+            <End Role="PERSONELLER" EntitySet="PERSONELLER" />
+            <End Role="FIS" EntitySet="FIS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FIS__SEPETID__398D8EEE" Association="Self.FK__FIS__SEPETID__398D8EEE">
+            <End Role="SEPET" EntitySet="SEPET" />
+            <End Role="FIS" EntitySet="FIS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__URUNLER__KATEGOR__267ABA7A" Association="Self.FK__URUNLER__KATEGOR__267ABA7A">
+            <End Role="KATEGORILER" EntitySet="KATEGORILER" />
+            <End Role="URUNLER" EntitySet="URUNLER" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MUSTERI__YASADIG__2B3F6F97" Association="Self.FK__MUSTERI__YASADIG__2B3F6F97">
+            <End Role="SEHIRLER" EntitySet="SEHIRLER" />
+            <End Role="MUSTERI" EntitySet="MUSTERI" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SEPET__MUSTERIID__32E0915F" Association="Self.FK__SEPET__MUSTERIID__32E0915F">
+            <End Role="MUSTERI" EntitySet="MUSTERI" />
+            <End Role="SEPET" EntitySet="SEPET" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SEPETSATI__SEPET__35BCFE0A" Association="Self.FK__SEPETSATI__SEPET__35BCFE0A">
+            <End Role="SEPET" EntitySet="SEPET" />
+            <End Role="SEPETSATIR" EntitySet="SEPETSATIR" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SEPETSATI__URUNI__36B12243" Association="Self.FK__SEPETSATI__URUNI__36B12243">
+            <End Role="URUNLER" EntitySet="URUNLER" />
+            <End Role="SEPETSATIR" EntitySet="SEPETSATIR" />
+          </AssociationSet>
+          <EntitySet Name="SAYAC" EntityType="REEDER2Model.SAYAC" />
+          <EntitySet Name="FIYATDEGISTIR" EntityType="REEDER2Model.FIYATDEGISTIR" />
+          <AssociationSet Name="FK__FIYATDEGI__URUNI__4BAC3F29" Association="REEDER2Model.FK__FIYATDEGI__URUNI__4BAC3F29">
+            <End Role="URUNLER" EntitySet="URUNLER" />
+            <End Role="FIYATDEGISTIR" EntitySet="FIYATDEGISTIR" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="SAYAC">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FFIS" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="FFATURA" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="FIYATDEGISTIR">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="URUNID" Type="Int32" />
+          <Property Name="DTARIH" Type="DateTime" Precision="3" />
+          <Property Name="EFIYAT" Type="Double" />
+          <NavigationProperty Name="URUNLER" Relationship="REEDER2Model.FK__FIYATDEGI__URUNI__4BAC3F29" FromRole="FIYATDEGISTIR" ToRole="URUNLER" />
+        </EntityType>
+        <Association Name="FK__FIYATDEGI__URUNI__4BAC3F29">
+          <End Type="REEDER2Model.URUNLER" Role="URUNLER" Multiplicity="0..1" />
+          <End Type="REEDER2Model.FIYATDEGISTIR" Role="FIYATDEGISTIR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="URUNLER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FIYATDEGISTIR">
+              <PropertyRef Name="URUNID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="REEDER2ModelStoreContainer" CdmEntityContainer="REEDER2Entities">
+          <EntitySetMapping Name="DEPARTMANLAR">
+            <EntityTypeMapping TypeName="REEDER2Model.DEPARTMANLAR">
+              <MappingFragment StoreEntitySet="DEPARTMANLAR">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ACIKLAMA" ColumnName="ACIKLAMA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FATURA">
+            <EntityTypeMapping TypeName="REEDER2Model.FATURA">
+              <MappingFragment StoreEntitySet="FATURA">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TOPLAM" ColumnName="TOPLAM" />
+                <ScalarProperty Name="FISID" ColumnName="FISID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FATURALAR">
+            <EntityTypeMapping TypeName="REEDER2Model.FATURALAR">
+              <MappingFragment StoreEntitySet="FATURALAR">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FATURANO" ColumnName="FATURANO" />
+                <ScalarProperty Name="TARIHID" ColumnName="TARIHID" />
+                <ScalarProperty Name="URUNID" ColumnName="URUNID" />
+                <ScalarProperty Name="FATURAID" ColumnName="FATURAID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FIS">
+            <EntityTypeMapping TypeName="REEDER2Model.FIS">
+              <MappingFragment StoreEntitySet="FIS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FISNO" ColumnName="FISNO" />
+                <ScalarProperty Name="SEPETID" ColumnName="SEPETID" />
+                <ScalarProperty Name="PERSONELID" ColumnName="PERSONELID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KATEGORILER">
+            <EntityTypeMapping TypeName="REEDER2Model.KATEGORILER">
+              <MappingFragment StoreEntitySet="KATEGORILER">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ACIKLAMA" ColumnName="ACIKLAMA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MUSTERI">
+            <EntityTypeMapping TypeName="REEDER2Model.MUSTERI">
+              <MappingFragment StoreEntitySet="MUSTERI">
+                <ScalarProperty Name="DURUM" ColumnName="DURUM" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ADISOYADI" ColumnName="ADISOYADI" />
+                <ScalarProperty Name="TCKIMLIKNO" ColumnName="TCKIMLIKNO" />
+                <ScalarProperty Name="DOGUMTARIHI" ColumnName="DOGUMTARIHI" />
+                <ScalarProperty Name="SIFRE" ColumnName="SIFRE" />
+                <ScalarProperty Name="YASADIGISEHIRID" ColumnName="YASADIGISEHIRID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PERSONELLER">
+            <EntityTypeMapping TypeName="REEDER2Model.PERSONELLER">
+              <MappingFragment StoreEntitySet="PERSONELLER">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ADISOYADI" ColumnName="ADISOYADI" />
+                <ScalarProperty Name="TCKIMLIKNO" ColumnName="TCKIMLIKNO" />
+                <ScalarProperty Name="DEPARTMANID" ColumnName="DEPARTMANID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SEHIRLER">
+            <EntityTypeMapping TypeName="REEDER2Model.SEHIRLER">
+              <MappingFragment StoreEntitySet="SEHIRLER">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ACIKLAMA" ColumnName="ACIKLAMA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SEPET">
+            <EntityTypeMapping TypeName="REEDER2Model.SEPET">
+              <MappingFragment StoreEntitySet="SEPET">
+                <ScalarProperty Name="KONTROL" ColumnName="KONTROL" />
+                <ScalarProperty Name="ADRES" ColumnName="ADRES" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MUSTERIID" ColumnName="MUSTERIID" />
+                <ScalarProperty Name="TARIH" ColumnName="TARIH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SEPETSATIR">
+            <EntityTypeMapping TypeName="REEDER2Model.SEPETSATIR">
+              <MappingFragment StoreEntitySet="SEPETSATIR">
+                <ScalarProperty Name="TARIH" ColumnName="TARIH" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SEPETID" ColumnName="SEPETID" />
+                <ScalarProperty Name="URUNID" ColumnName="URUNID" />
+                <ScalarProperty Name="URUNADET" ColumnName="URUNADET" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="URUNLER">
+            <EntityTypeMapping TypeName="REEDER2Model.URUNLER">
+              <MappingFragment StoreEntitySet="URUNLER">
+                <ScalarProperty Name="KODU" ColumnName="KODU" />
+                <ScalarProperty Name="KALDIR" ColumnName="KALDIR" />
+                <ScalarProperty Name="IMG" ColumnName="IMG" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ADI" ColumnName="ADI" />
+                <ScalarProperty Name="FIYAT" ColumnName="FIYAT" />
+                <ScalarProperty Name="STOKMIKTAR" ColumnName="STOKMIKTAR" />
+                <ScalarProperty Name="KATEGORIID" ColumnName="KATEGORIID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SAYAC">
+            <EntityTypeMapping TypeName="REEDER2Model.SAYAC">
+              <MappingFragment StoreEntitySet="SAYAC">
+                <ScalarProperty Name="FFATURA" ColumnName="FFATURA" />
+                <ScalarProperty Name="FFIS" ColumnName="FFIS" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FIYATDEGISTIR">
+            <EntityTypeMapping TypeName="REEDER2Model.FIYATDEGISTIR">
+              <MappingFragment StoreEntitySet="FIYATDEGISTIR">
+                <ScalarProperty Name="EFIYAT" ColumnName="EFIYAT" />
+                <ScalarProperty Name="DTARIH" ColumnName="DTARIH" />
+                <ScalarProperty Name="URUNID" ColumnName="URUNID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

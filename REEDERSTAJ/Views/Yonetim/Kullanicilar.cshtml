@@ -1,0 +1,80 @@
+﻿@model IEnumerable<REEDERSTAJ.Models.MUSTERI>
+
+@{
+    ViewBag.Title = "Kullanicilar";
+    Layout = "~/Views/Shared/_YonetimLayout.cshtml";
+}
+<head>
+    <style>
+        body {
+            background-color: whitesmoke;
+        }
+        table{
+            text-align:center;
+        }
+    </style>
+</head>
+
+<h2 style="margin-top:100px;">Kullanicilar</h2>
+
+<table class="table">
+    <tr>
+        <th style="text-align:center;">
+            ADI SOYADI
+        </th>
+        <th style="text-align:center;">
+            TC KİMLİK NUMARASI
+        </th>
+        @*<th style="text-align:center;">
+            DOĞUM TARİHİ
+        </th>
+        <th style="text-align:center;">
+            ŞİFRESİ
+        </th>
+        <th style="text-align:center;">
+            YAŞADIĞI ŞEHİR
+        </th>*@
+        <th style="text-align:center;">
+            DURUM
+        </th>
+
+        <th style="text-align:center;">
+            PROFİL
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ADISOYADI)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TCKIMLIKNO)
+            </td>
+            @*<td>
+                @item.DOGUMTARIHI.ToString().Split(' ')[0]
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SIFRE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SEHIRLER.ACIKLAMA)
+            </td>*@
+            <td>
+                @if(item.DURUM == true || item.DURUM == null)
+                {
+                    <p>AKTIF</p>
+                }
+                else
+                {
+                    <p>PASIF</p>
+                }
+            </td>
+            <td>
+                <a href="@Url.Action("KullaniciProfil", "Yonetim", new { id = item.ID } )" style="color:black"><i class="fa fa-user fa-2x"></i></a>
+            </td>
+        </tr>
+    }
+
+</table>
